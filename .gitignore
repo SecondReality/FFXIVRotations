@@ -1,0 +1,11 @@
+client/src/jquery/*
+client/build/*
+client/node_modules/*
+correspondance/*
+client/src/materializeSASS/*
+database/skills - Copy*
+database/.netrc
+database-backups/*
+*.d.ts
+*.js.map
+*.css.map
