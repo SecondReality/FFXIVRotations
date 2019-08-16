@@ -1,0 +1,140 @@
+$primary-color: #607d8b !default
+$primary-color-light: #c9c9c9 !default
+$primary-color-dark: #406171 !default
+
+html
+    position: relative
+    min-height: 100%
+
+body
+  height: 100%
+  background-color: #ebebeb
+  margin: 0 0 100px
+
+h1
+    font-size: 3rem !important
+
+.pinned
+    width: 21.65002627430373%
+
+#header
+    color: white
+
+footer
+    position: fixed
+    left: 0
+    bottom: 0
+    width: 100%
+
+#header-banner
+    background-color: $primary-color-dark
+
+.primary-light
+    background-color: $primary-color-light
+
+.primary-dark
+    background-color: $primary-color-dark
+
+#hits
+  font-size: small
+  color: #444
+  margin-bottom: 70px
+
+#classIcon
+  vertical-align: middle
+  margin-left: 10px
+
+.skillSelector
+    padding: 12px
+    overflow: hidden
+
+    .skillSelectorItem
+        font-size: small
+        padding-bottom: 4px
+        width: 180px
+        float: left
+
+#skillInfo
+  font-weight: 400
+  line-height: 150%
+  td
+    width: 50%
+
+  em
+    color: #F361AA
+  .skillLabel
+    display: inline-block
+    width: 80px
+  span
+
+#sortable
+  margin: 0
+  padding: 12px
+  border-radius: 4px
+  min-height: 46+24px
+
+.arrow
+    display: inline-block
+    width: 0
+    height: 0
+    border-top: 10px solid transparent
+    border-bottom: 10px solid transparent
+    border-left: 10px solid white
+    margin: 5px
+
+#skillInfo
+    .skillIcon
+        margin-right: 10px
+        vertical-align: -50%
+
+.skillIcon
+    display: inline-block
+    padding: 0px
+    width: 40px
+    height: 40px
+    vertical-align: bottom
+    box-shadow: 1px 1px 1px #8A8A8A
+    border-radius: 6px
+    background-position: center center
+    position: relative
+    box-sizing: content-box
+    .gcd
+        position: absolute
+        text-shadow: 1px -1px 3px black
+        color: #fff
+        font-size: 15px
+        left: -6px
+        top: -4px
+        transform-origin: center center
+        transform: rotate(90deg)
+    &:hover
+        box-shadow: inset 0 0 4px #eef, 0 0 3px #eef
+        border-radius: 4px
+
+.select-dropdown
+    li
+        img
+            width: auto !important
+            height: auto !important
+
+/* This is the square that is shown as a placeholder when dragging a skill over the sequence
+#sortable
+  .block-placeholder
+    background: #baa
+    border-radius: 4px
+  .skillIcon
+    margin: 3px 3px 3px 0
+
+.skillIconContainer
+    float: left
+    padding-right: 4px
+
+#sortable div:hover
+  cursor: pointer
+
+.skillSelector
+    .skillIcon:hover
+        cursor: pointer
+
+.ui-draggable-dragging, .ui-sortable-helper
+  cursor: move !important
