@@ -9,3 +9,6 @@ database-backups/*
 *.d.ts
 *.js.map
 *.css.map
+notes.txt
+server/*
+backups/*
