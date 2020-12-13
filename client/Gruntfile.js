@@ -6,8 +6,7 @@ module.exports = function(grunt)
       dist: {
       files: {
         'build/ffxiv-rotations.js': 'src/ffxiv-rotations.js',
-        'build/js.cookie.js': 'src/js.cookie.js',
-        'build/db.js': 'src/db.js',
+        'build/js.cookie.js': 'src/js.cookie.js'
       }
     }
   },
@@ -19,29 +18,22 @@ module.exports = function(grunt)
       options: {
         module: 'amd',
         target: 'es5',
-        basePath: 'src',
+        rootDir: 'src',
         sourceMap: true,
         declaration: true
       }
     }
   },
 
+  /*
   exec: {
     generateJson: {
       cwd: '../database',
       command: 'python generateJson.py'
     },
   },
-
+*/
   watch: {
-
-  databaseWatch: {
-    files: ['../database/skills.db', '../database/generateJson.py'],
-    tasks: ['exec'],
-    options: {
-      interrupt: true,
-    },
-  },
 
   typescriptWatch: {
     files: 'src/ffxiv-rotations.ts',
@@ -72,6 +64,17 @@ module.exports = function(grunt)
     }
 },
 
+json_minification: {
+  target: {
+    files: [{
+      expand: true,
+      cwd: '../database',
+      src: ['db.json'],
+      dest: 'build'
+    }]
+  }
+},
+
 cssmin: {
   options: {
     shorthandCompacting: false,
@@ -96,7 +99,6 @@ htmlmin: {
     }
 }
 
-
 });
 
     grunt.loadNpmTasks('grunt-contrib-uglify');
@@ -104,8 +106,9 @@ htmlmin: {
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-exec');
     grunt.loadNpmTasks('grunt-sass');
+    grunt.loadNpmTasks('grunt-json-minification');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-contrib-htmlmin');
 
-    grunt.registerTask('default', ['typescript', 'exec', 'uglify', 'sass', 'cssmin', 'htmlmin']);
+    grunt.registerTask('default', ['typescript', 'uglify', 'sass', 'json_minification', 'cssmin', 'htmlmin']);
 };
