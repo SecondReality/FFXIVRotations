@@ -68,7 +68,7 @@ json_minification: {
   target: {
     files: [{
       expand: true,
-      cwd: '../database',
+      cwd: '../client/src',
       src: ['db.json'],
       dest: 'build'
     }]

@@ -87,11 +87,11 @@ class Skill
 	{
 		if(this.multiIcon)
 		{
-			return 'icons/' + this.icon+(selectedClassId-8)+'.png';
+			return 'icon/' + this.icon+(selectedClassId-8)+'.png';
 		}
 		else
 		{
-			return 'icons/' + this.icon+'.png';
+			return 'icon/' + this.icon+'.png';
 		}
 	}
 
@@ -476,21 +476,6 @@ $(function()
 	$('#skillInfo').pushpin({ top: $('#skillInfo').offset().top });
 	$('#skillInfo').hide();
 
-	// Populate the class selector:
-	$.each(db['classes'], function(key, value)
-	{
-		var optGroupString = '#' + value.discipline + 'Selector';
-
-		$(optGroupString)
-		.append($("<option></option>")
-		.attr("value", key)
-		.attr("data-icon", getClassIcon(key))
-		.attr("class", "left")
-		.text(key));
-	});
-
-	updateClassSelect();
-
 	// Respond to the clear button being clicked
 	$('#clear').click(function()
 	{
@@ -586,8 +571,14 @@ $(function()
 	var idUrl = location.pathname.substring(i + 1);
 	var id = fromURLBase(idUrl)
 
-	$.get("load.py", { id: id }).done(function(data)
+	var getDatabase = $.getJSON( "db.json");
+	var getSequenceData = $.get("load.py", { id: id });
+
+	$.when(getDatabase, getSequenceData).done(function ( response1, response2 )
 	{
+		db = response1[0];
+		var data = response2[0];
+
 		if(!hasError(data))
 		{
 			selectedClass = data.class;
@@ -595,6 +586,21 @@ $(function()
 			setVisits(data.hits);
 		}
 
+		console.log("got both data");
 		populateSkillSelector();
+
+		// Populate the class selector:
+		$.each(db['classes'], function(key, value)
+		{
+			var optGroupString = '#' + value.discipline + 'Selector';
+	
+			$(optGroupString)
+			.append($("<option></option>")
+			.attr("value", key)
+			.attr("data-icon", getClassIcon(key))
+			.attr("class", "left")
+			.text(key));
+		});
+		updateClassSelect();
 	});
 });

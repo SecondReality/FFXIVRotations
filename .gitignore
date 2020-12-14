@@ -6,9 +6,17 @@ client/src/materializeSASS/*
 database/skills - Copy*
 database/.netrc
 database-backups/*
-*.d.ts
+
+client/src/ffxiv-rotations.d.ts
+client/src/db.js
+client/src/ffxiv-rotations.css
+client/src/ffxiv-rotations.js
+
+package-lock.json
+
 *.js.map
 *.css.map
 notes.txt
-server/*
-backups/*
+server/
+backups/
+node_modules/

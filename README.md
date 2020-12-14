@@ -67,7 +67,19 @@ JSON to database conversion:
 "RangeRadius"[1]    effect_range (radius)           "0y" -> 0
                     deprecated
 
-## Database structure
+
+
+
+
+# Maintenance
+
+* Remove old, unused entries from the sequences database:
+
+```sql
+DELETE FROM `sequences` WHERE `date` < '2019-01-01 11:08:19' ORDER BY `date` ASC
+```
+
+## Database structure - DEPRECATED
 
 
 ### Columns
