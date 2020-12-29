@@ -77,6 +77,7 @@ class Skill
 	multiIcon: Boolean;
 	cross_class_skill: number;
 	deprecated: Boolean;
+	gcd: Boolean;
 
 	displayName(): string
 	{
@@ -144,6 +145,7 @@ function getSkill(skillId: number) : Skill
 	skill.category = dbSkill.category;
 	skill.radius = dbSkill.radius;
 	skill.cross_class_skill = dbSkill.cross_class_skill
+	skill.gcd = dbSkill.gcd
 	if(dbSkill.deprecated)
 	{
 		skill.deprecated = true;
@@ -262,10 +264,10 @@ function createSkillDiv(id: number) : JQuery
 
 	// If we're dealing with a GCD skill, show a little icon:
 	// Temporarily disabled until GCDs are confirmed.
-	// if(skill.recast_time==3)
-	// {
-//		newDiv.append('<i class="material-icons gcd">replay</i>')
-	// }
+	if(skill.gcd==false)
+	{
+		newDiv.append('<i class="material-icons gcd">replay</i>')
+	}
 
 	createSkillInfoMouseOver(newDiv, skill);
 	return newDiv;
